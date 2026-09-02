@@ -1,6 +1,6 @@
 node_modules
 .next
-.gh-token
+.gh-token*
 .env*.local
 .DS_Store
 next-env.d.ts

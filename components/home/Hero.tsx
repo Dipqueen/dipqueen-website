@@ -17,7 +17,7 @@ export default function Hero() {
             Ontdek de mogelijkheden
           </a>
           <a href="/check-mijn-idee" className="btn-outline-dark">
-            Check mijn idee
+            Breng het tot leven
           </a>
         </div>
       </div>

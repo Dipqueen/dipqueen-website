@@ -19,7 +19,7 @@ export default function Header() {
         href="/check-mijn-idee"
         className="text-xs tracking-[0.12em] uppercase font-semibold border border-pearl/40 px-5 py-2.5 text-pearl hover:border-pearl transition-colors"
       >
-        Check mijn idee
+        Breng het tot leven
       </a>
     </header>
   );

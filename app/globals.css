@@ -28,6 +28,15 @@
   .eyebrow {
     @apply text-xs tracking-[0.22em] uppercase font-semibold text-bronze;
   }
+  .field-label {
+    @apply block text-xs tracking-[0.1em] uppercase text-pearl/60 mb-2;
+  }
+  .field-input {
+    @apply w-full bg-transparent border border-pearl/25 text-pearl px-4 py-3 text-sm placeholder:text-pearl/30 focus:outline-none focus:border-bronze transition-colors;
+  }
+  .field-upload {
+    @apply w-full border border-dashed border-pearl/25 text-pearl/60 px-4 py-6 text-sm text-center cursor-pointer hover:border-bronze hover:text-pearl transition-colors;
+  }
 }
 
 /* ---- Patroon-swatches: dezelfde CSS-patronen als in de mockup ---- */
