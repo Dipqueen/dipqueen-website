@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
     <footer className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 md:px-12 py-14 border-t border-pearl/10">
-      <div className="flex flex-col gap-1.5 items-center md:items-start">
-        <span className="font-display text-xl tracking-[0.14em] text-pearl">DIPQUEEN</span>
+      <div className="flex flex-col gap-2 items-center md:items-start">
+        <img src="/dipqueen-logo-mark.png" alt="DipQueen" className="h-10 w-auto" />
         <span className="text-[11px] tracking-[0.1em] text-pearl/45">PREMIUM FINISHES. MULTI DIPPED.</span>
       </div>
       <nav className="flex gap-8 text-sm text-pearl/70">

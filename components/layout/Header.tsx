@@ -1,8 +1,8 @@
 export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 md:px-12 bg-onyx/80 backdrop-blur-sm">
-      <a href="/" className="font-display text-lg tracking-[0.14em] text-pearl">
-        DIPQUEEN
+      <a href="/" className="flex items-center">
+        <img src="/dipqueen-logo-mark.png" alt="DipQueen" className="h-9 w-auto" />
       </a>
       <nav className="hidden md:flex items-center gap-8 text-sm text-pearl/70">
         <a href="/inspiratie" className="hover:text-pearl">
