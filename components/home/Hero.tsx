@@ -29,7 +29,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative flex items-center gap-16 px-6 md:px-16 pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden">
+    <section className="relative flex flex-col md:flex-row items-center gap-12 md:gap-16 px-6 md:px-16 pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden">
       <div className="flex-1 max-w-xl flex flex-col gap-6 z-10">
         <span className="eyebrow animate-fade-up [animation-delay:0ms]">Hydro Dipping Studio</span>
         <h1 className="font-display text-6xl md:text-7xl leading-[1.02] text-pearl animate-fade-up [animation-delay:120ms]">
@@ -59,43 +59,15 @@ export default function Hero() {
             </button>
           )}
         </div>
-
-        {/* Mobiele versie van de dip-vormen: op desktop staan ze rechts naast de tekst (zie hieronder),
-           hier klein en onder elkaar zodat "Dip it" ook op een telefoon echt iets laat zien. */}
-        <div className="flex md:hidden gap-4 mt-2 h-24">
-          <div
-            className={`rounded-blob flex-1 h-full transition-[clip-path] duration-[1400ms] ease-out ${
-              dipped ? "pat-marble" : "bg-pearl/8 border border-pearl/15"
-            }`}
-            style={{ clipPath: dipped ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)" }}
-          />
-          <div
-            className={`rounded-blob flex-1 h-full transition-[clip-path] duration-[1400ms] ease-out ${
-              dipped ? "pat-carbon" : "bg-pearl/8 border border-pearl/15"
-            }`}
-            style={{
-              clipPath: dipped ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)",
-              transitionDelay: dipped ? "180ms" : "0ms",
-            }}
-          />
-        </div>
       </div>
 
-      <div className="hidden md:block relative flex-1 h-[560px]">
-        <div
-          className={`rounded-blob absolute w-[380px] h-[440px] right-12 top-4 animate-float transition-[clip-path] duration-[1400ms] ease-out ${
-            dipped ? "pat-marble" : "bg-pearl/8 border border-pearl/15"
-          }`}
+      <div className="relative flex-1 w-full max-w-md md:max-w-none h-[320px] md:h-[560px] rounded-2xl overflow-hidden border border-pearl/10 bg-[#111214]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero-product.jpg"
+          alt="DipQueen hydro dipped champagneset in marmerpatroon: fles, koeler en dienblad"
+          className="absolute inset-0 w-full h-full object-cover transition-[clip-path] duration-[1600ms] ease-out"
           style={{ clipPath: dipped ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)" }}
-        />
-        <div
-          className={`rounded-blob absolute w-[190px] h-[190px] right-[300px] top-[290px] opacity-90 animate-float-delayed transition-[clip-path] duration-[1400ms] ease-out ${
-            dipped ? "pat-carbon" : "bg-pearl/8 border border-pearl/15"
-          }`}
-          style={{
-            clipPath: dipped ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)",
-            transitionDelay: dipped ? "180ms" : "0ms",
-          }}
         />
       </div>
     </section>
