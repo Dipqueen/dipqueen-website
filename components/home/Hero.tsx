@@ -59,6 +59,26 @@ export default function Hero() {
             </button>
           )}
         </div>
+
+        {/* Mobiele versie van de dip-vormen: op desktop staan ze rechts naast de tekst (zie hieronder),
+           hier klein en onder elkaar zodat "Dip it" ook op een telefoon echt iets laat zien. */}
+        <div className="flex md:hidden gap-4 mt-2 h-24">
+          <div
+            className={`rounded-blob flex-1 h-full transition-[clip-path] duration-[1400ms] ease-out ${
+              dipped ? "pat-marble" : "bg-pearl/8 border border-pearl/15"
+            }`}
+            style={{ clipPath: dipped ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)" }}
+          />
+          <div
+            className={`rounded-blob flex-1 h-full transition-[clip-path] duration-[1400ms] ease-out ${
+              dipped ? "pat-carbon" : "bg-pearl/8 border border-pearl/15"
+            }`}
+            style={{
+              clipPath: dipped ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)",
+              transitionDelay: dipped ? "180ms" : "0ms",
+            }}
+          />
+        </div>
       </div>
 
       <div className="hidden md:block relative flex-1 h-[560px]">
