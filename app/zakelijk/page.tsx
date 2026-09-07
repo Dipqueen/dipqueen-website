@@ -11,7 +11,7 @@ export default function Zakelijk() {
           Jouw product. Jouw merk. Anything but standard.
         </h1>
         <p className="text-pearl/65 max-w-lg mb-10">
-          Wij helpen bedrijven om bestaande producten visueel onderdeel van hun merk te maken —
+          Wij helpen bedrijven om bestaande producten visueel onderdeel van hun merk te maken,
           met branded productseries, custom patterns, logo-integratie, limited editions en
           prototypes. Van kleine oplages tot grotere series.
         </p>

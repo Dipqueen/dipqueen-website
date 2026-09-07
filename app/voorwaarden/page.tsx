@@ -11,7 +11,7 @@ export default function Voorwaarden() {
             <span className="eyebrow">Voorwaarden</span>
             <h1 className="font-display text-4xl text-pearl mt-2 mb-2">Gebruiksvoorwaarden</h1>
             <p className="text-pearl/40 text-xs">
-              Concept-tekst — laat deze pagina nog juridisch checken voordat de site publiek gaat.
+              Concept-tekst: laat deze pagina nog juridisch checken voordat de site publiek gaat.
             </p>
           </div>
 
@@ -44,8 +44,8 @@ export default function Voorwaarden() {
           <section className="flex flex-col gap-2">
             <h2 className="font-display text-xl text-pearl">Intellectueel eigendom</h2>
             <p>
-              Alle content op deze website — teksten, beelden en patronen — is eigendom van
-              DipQueen BV, tenzij anders vermeld.
+              Alle content op deze website, waaronder teksten, beelden en patronen, is eigendom
+              van DipQueen BV, tenzij anders vermeld.
             </p>
           </section>
 

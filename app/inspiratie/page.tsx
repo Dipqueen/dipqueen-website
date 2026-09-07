@@ -45,7 +45,7 @@ export default function InspiratieWall() {
             Wat anderen lieten dippen
           </h1>
           <p className="text-pearl/60 max-w-md">
-            Een greep uit afgeronde projecten — als voorbeeld voor jouw eigen idee.
+            Een greep uit afgeronde projecten, als voorbeeld voor jouw eigen idee.
           </p>
         </div>
 

@@ -90,3 +90,83 @@
   background: #17181a;
   border: 1px dashed rgba(244, 239, 232, 0.35);
 }
+
+/* ---- Beweging: scroll-reveal, ambient float, subtiele micro-interacties ---- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s ease both;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1.5deg);
+  }
+}
+.animate-float {
+  animation: float-slow 7s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float-slow 8s ease-in-out infinite;
+  animation-delay: 1.1s;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+.animate-breathe {
+  animation: breathe 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-fade-up,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-spin-slow,
+  .animate-breathe {
+    animation: none !important;
+  }
+}

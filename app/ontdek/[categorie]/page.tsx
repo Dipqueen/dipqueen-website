@@ -29,11 +29,11 @@ export default function KiesProduct() {
         <div className="flex flex-col items-center text-center mb-4">
           <span className="eyebrow">Inspiration Studio</span>
           <h1 className="font-display text-4xl md:text-5xl text-pearl mt-2 mb-3">
-            Stap 2 — Kies een product
+            Stap 2: Kies een product
           </h1>
           {categorie && (
             <p className="text-pearl/60 max-w-md">
-              Binnen <span className="text-bronze">{categorie.naam}</span> — welk product wil je
+              Binnen <span className="text-bronze">{categorie.naam}</span>, welk product wil je
               zien?
             </p>
           )}

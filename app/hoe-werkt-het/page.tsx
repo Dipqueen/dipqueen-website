@@ -12,7 +12,7 @@ const STAPPEN = [
     nr: "02",
     titel: "Base",
     tekst:
-      "Een dekkende basislaag wordt aangebracht — de ondergrond waarop het patroon straks zichtbaar wordt.",
+      "Een dekkende basislaag wordt aangebracht: de ondergrond waarop het patroon straks zichtbaar wordt.",
   },
   {
     nr: "03",
@@ -30,7 +30,7 @@ const STAPPEN = [
     nr: "05",
     titel: "Finish",
     tekst:
-      "Na het spoelen en drogen krijgt het product een beschermende, UV-bestendige lak — klaar voor gebruik.",
+      "Na het spoelen en drogen krijgt het product een beschermende, UV-bestendige lak, klaar voor gebruik.",
   },
 ];
 
@@ -45,8 +45,8 @@ export default function HoeWerktHet() {
             Van kaal naar gedipt
           </h1>
           <p className="text-pearl/60 max-w-lg">
-            Hydro dipping (ook wel watertransfer printing) brengt een patroon of print aan op
-            vrijwel elk vormgegeven oppervlak — via water, niet via een spuitbus of sticker.
+            Hydro dipping (ook wel watertransfer printing) brengt via water een patroon of print
+            aan op vrijwel elk vormgegeven oppervlak, niet via een spuitbus of sticker.
           </p>
         </div>
 

@@ -43,7 +43,7 @@ export default function KiesPatroon() {
         <div className="flex flex-col items-center text-center mb-4">
           <span className="eyebrow">Inspiration Studio</span>
           <h1 className="font-display text-4xl md:text-5xl text-pearl mt-2 mb-3">
-            Stap 3 — Kies een patroon
+            Stap 3: Kies een patroon
           </h1>
           {product && (
             <p className="text-pearl/60 max-w-md">
@@ -92,7 +92,7 @@ export default function KiesPatroon() {
 
         {patronen && patronen.length === 0 && (
           <p className="text-center text-pearl/50">
-            Voor dit product staan nog geen patronen klaar — check gerust je eigen idee via de
+            Voor dit product staan nog geen patronen klaar. Check gerust je eigen idee via de
             knop hieronder.
           </p>
         )}

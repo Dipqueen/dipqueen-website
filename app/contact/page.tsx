@@ -15,7 +15,7 @@ export default function Contact() {
           team terecht.
         </p>
         <p className="text-pearl/40 text-xs max-w-md mb-10">
-          [Plaats hier het gewenste contact-e-mailadres en/of telefoonnummer — nog in te vullen.]
+          [Plaats hier het gewenste contact-e-mailadres en/of telefoonnummer, nog in te vullen.]
         </p>
         <a href="/check-mijn-idee" className="btn-primary">
           Breng het tot leven

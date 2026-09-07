@@ -52,7 +52,7 @@ export default function Transformatie() {
       <main className="px-6 md:px-16 pt-40 pb-28 min-h-screen flex flex-col items-center">
         <span className="eyebrow">Inspiration Studio</span>
         <h1 className="font-display text-4xl md:text-5xl text-pearl mt-2 mb-3 text-center">
-          Stap 4 — Zo zou het eruit zien
+          Stap 4: Zo zou het eruit zien
         </h1>
         {alleGeladen && (
           <p className="text-pearl/60 max-w-md text-center mb-4">
@@ -103,7 +103,7 @@ export default function Transformatie() {
             </div>
 
             <p className="text-xs text-pearl/40 max-w-sm text-center mt-8">
-              Dit is een impressie op basis van goedgekeurde patronen — geen exacte weergave van
+              Dit is een impressie op basis van goedgekeurde patronen, geen exacte weergave van
               jouw eigen product. Na het insturen bekijken we samen wat er precies mogelijk is.
             </p>
           </>

@@ -11,7 +11,7 @@ export default function Privacy() {
             <span className="eyebrow">Privacy</span>
             <h1 className="font-display text-4xl text-pearl mt-2 mb-2">Privacyverklaring</h1>
             <p className="text-pearl/40 text-xs">
-              Concept-tekst — laat deze pagina nog juridisch checken voordat de site publiek gaat.
+              Concept-tekst: laat deze pagina nog juridisch checken voordat de site publiek gaat.
             </p>
           </div>
 

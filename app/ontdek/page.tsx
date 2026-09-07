@@ -30,7 +30,7 @@ export default function InspirationStudioStart() {
         <div className="flex flex-col items-center text-center mb-4">
           <span className="eyebrow">Inspiration Studio</span>
           <h1 className="font-display text-4xl md:text-5xl text-pearl mt-2 mb-3">
-            Stap 1 — Kies een categorie
+            Stap 1: Kies een categorie
           </h1>
           <p className="text-pearl/60 max-w-md">
             Kies waar jouw idee thuishoort. Daarna kies je een product, een patroon, en zien we

@@ -18,7 +18,7 @@ const body = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "DipQueen — Make it yours",
+  title: "DipQueen | Make it yours",
   description:
     "DipQueen transformeert bestaande producten met patronen, prints en designs via hydro dipping. Ontdek de mogelijkheden en check jouw idee.",
 };

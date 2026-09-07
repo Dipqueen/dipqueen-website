@@ -100,7 +100,7 @@ function BrengHetTotLevenForm() {
           </p>
           <p className="font-display text-2xl text-bronze mb-6">{aanvraagnummer}</p>
           <p className="text-pearl/60 max-w-md mb-10">
-            We bekijken jouw idee en laten binnen enkele werkdagen weten wat er mogelijk is — dit
+            We bekijken jouw idee en laten binnen enkele werkdagen weten wat er mogelijk is. Dit
             is nog geen bevestigde bestelling. Bewaar het aanvraagnummer voor je eigen
             administratie.
           </p>
@@ -123,7 +123,7 @@ function BrengHetTotLevenForm() {
             Vertel ons over jouw idee
           </h1>
           <p className="text-pearl/60 max-w-md">
-            Vijf korte stappen. Geen automatische bestelling — we bekijken elk idee persoonlijk en
+            Vijf korte stappen. Geen automatische bestelling: we bekijken elk idee persoonlijk en
             laten weten wat er mogelijk is.
           </p>
         </div>
@@ -135,7 +135,7 @@ function BrengHetTotLevenForm() {
             <>
               <div>
                 <label className="field-label" htmlFor="omschrijving">
-                  Wat wil je laten dippen — en hoe zie je het voor je?
+                  Wat wil je laten dippen en hoe zie je het voor je?
                 </label>
                 <textarea
                   id="omschrijving"
@@ -197,7 +197,7 @@ function BrengHetTotLevenForm() {
                 </label>
               </div>
               <p className="text-pearl/40 text-xs">
-                Geen foto bij de hand? Geen probleem — beschrijf de stijl gewoon in de
+                Geen foto bij de hand? Geen probleem, beschrijf de stijl gewoon in de
                 omschrijving van stap 1, dat mag ook.
               </p>
             </>
@@ -297,7 +297,7 @@ function BrengHetTotLevenForm() {
               <div className="border border-pearl/15 p-5 flex flex-col gap-3">
                 <div>
                   <span className="text-pearl/40 uppercase text-xs tracking-[0.08em]">Idee</span>
-                  <p className="text-pearl">{omschrijving || "—"}</p>
+                  <p className="text-pearl">{omschrijving || "-"}</p>
                 </div>
                 {categorySlug && (
                   <div>
@@ -322,9 +322,9 @@ function BrengHetTotLevenForm() {
                 <div>
                   <span className="text-pearl/40 uppercase text-xs tracking-[0.08em]">Contact</span>
                   <p className="text-pearl">
-                    {naam} — {email}
-                    {telefoon ? ` — ${telefoon}` : ""}
-                    {bedrijf ? ` — ${bedrijf}` : ""}
+                    {naam}, {email}
+                    {telefoon ? `, ${telefoon}` : ""}
+                    {bedrijf ? `, ${bedrijf}` : ""}
                   </p>
                 </div>
                 {(productFoto || inspiratieFoto) && (
@@ -337,7 +337,7 @@ function BrengHetTotLevenForm() {
                 )}
               </div>
               <p className="text-pearl/40 text-xs">
-                Dit is een aanvraag, geen bestelling — we nemen persoonlijk contact op om te
+                Dit is een aanvraag, geen bestelling. We nemen persoonlijk contact op om te
                 bespreken wat er mogelijk is.
               </p>
               {fout && <p className="text-bronze text-sm">{fout}</p>}
