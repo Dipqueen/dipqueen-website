@@ -13,10 +13,8 @@ export const THEMES: { key: ThemeKey; naam: string; swatch: string }[] = [
 type ThemeState = {
   theme: ThemeKey | null;
   dipped: boolean;
-  /** Telt alleen omhoog bij een échte, verse klik op "Dip it!" (nooit bij het
-   * herstellen van een eerdere keuze uit deze sessie). Componenten zoals de
-   * hero-foto gebruiken dit om hun dip-bak animatie precies één keer te tonen,
-   * en niet steeds opnieuw af te spelen als iemand naar een andere pagina gaat. */
+  /** Telt alleen omhoog bij een échte klik op "Dip it!". Componenten zoals de
+   * hero-foto gebruiken dit om hun dip-bak animatie precies één keer te tonen. */
   dipTrigger: number;
   chooseTheme: (t: ThemeKey) => void;
   dip: () => void;
@@ -26,26 +24,13 @@ type ThemeState = {
 const ThemeContext = createContext<ThemeState | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  // Bewust geen sessionStorage: de keuze mag blijven staan zolang je binnen de
+  // site doorklikt, maar bij elke verse laadbeurt van de pagina (nieuw
+  // tabblad, verversen, de homepage opnieuw openen) begint het weer bij nul en
+  // vraagt de pop-up opnieuw.
   const [theme, setThemeState] = useState<ThemeKey | null>(null);
   const [dipped, setDipped] = useState(false);
   const [dipTrigger, setDipTrigger] = useState(0);
-
-  // Bij het laden: gekozen thema uit deze sessie herstellen, zodat je niet op elke
-  // pagina opnieuw hoeft te kiezen.
-  useEffect(() => {
-    try {
-      const savedTheme = sessionStorage.getItem("dq-site-theme") as ThemeKey | null;
-      const savedDipped = sessionStorage.getItem("dq-site-dipped") === "1";
-      if (savedTheme) setThemeState(savedTheme);
-      if (savedDipped) setDipped(true);
-      // Opruimen: oude sleutelnamen uit eerdere testversies, anders lijkt het alsof
-      // er al gedipt is terwijl de pop-up nooit is gezien.
-      sessionStorage.removeItem("dq-theme");
-      sessionStorage.removeItem("dq-dipped");
-    } catch {
-      // sessionStorage kan onbeschikbaar zijn, geen probleem
-    }
-  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -57,32 +42,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   function chooseTheme(t: ThemeKey) {
     setThemeState(t);
-    try {
-      sessionStorage.setItem("dq-site-theme", t);
-    } catch {
-      // geen probleem
-    }
   }
 
   function dip() {
     setDipped(true);
     setDipTrigger((n) => n + 1);
-    try {
-      sessionStorage.setItem("dq-site-dipped", "1");
-    } catch {
-      // geen probleem
-    }
   }
 
   function reset() {
     setThemeState(null);
     setDipped(false);
-    try {
-      sessionStorage.removeItem("dq-site-theme");
-      sessionStorage.removeItem("dq-site-dipped");
-    } catch {
-      // geen probleem
-    }
   }
 
   return (
