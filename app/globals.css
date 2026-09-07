@@ -121,8 +121,8 @@
 }
 
 .pat-undipped {
-  background: rgba(130, 130, 130, 0.14);
-  border: 1px dashed rgba(130, 130, 130, 0.4);
+  background: rgba(244, 239, 232, 0.12);
+  border: 1px dashed rgba(244, 239, 232, 0.35);
 }
 
 /* ---- Beweging: scroll-reveal, ambient float, subtiele micro-interacties ---- */
