@@ -13,6 +13,11 @@ export const THEMES: { key: ThemeKey; naam: string; swatch: string }[] = [
 type ThemeState = {
   theme: ThemeKey | null;
   dipped: boolean;
+  /** Telt alleen omhoog bij een échte, verse klik op "Dip it!" (nooit bij het
+   * herstellen van een eerdere keuze uit deze sessie). Componenten zoals de
+   * hero-foto gebruiken dit om hun dip-bak animatie precies één keer te tonen,
+   * en niet steeds opnieuw af te spelen als iemand naar een andere pagina gaat. */
+  dipTrigger: number;
   chooseTheme: (t: ThemeKey) => void;
   dip: () => void;
   reset: () => void;
@@ -23,6 +28,7 @@ const ThemeContext = createContext<ThemeState | null>(null);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ThemeKey | null>(null);
   const [dipped, setDipped] = useState(false);
+  const [dipTrigger, setDipTrigger] = useState(0);
 
   // Bij het laden: gekozen thema uit deze sessie herstellen, zodat je niet op elke
   // pagina opnieuw hoeft te kiezen.
@@ -60,6 +66,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   function dip() {
     setDipped(true);
+    setDipTrigger((n) => n + 1);
     try {
       sessionStorage.setItem("dq-site-dipped", "1");
     } catch {
@@ -79,7 +86,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, dipped, chooseTheme, dip, reset }}>
+    <ThemeContext.Provider value={{ theme, dipped, dipTrigger, chooseTheme, dip, reset }}>
       {children}
     </ThemeContext.Provider>
   );

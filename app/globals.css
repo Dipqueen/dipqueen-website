@@ -177,6 +177,19 @@
   animation: spin-slow 14s linear infinite;
 }
 
+@keyframes wave-drift {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-24px);
+  }
+}
+.animate-wave-drift {
+  animation: wave-drift 2.2s ease-in-out infinite;
+}
+
 @keyframes breathe {
   0%,
   100% {
@@ -200,7 +213,8 @@
   .animate-float,
   .animate-float-delayed,
   .animate-spin-slow,
-  .animate-breathe {
+  .animate-breathe,
+  .animate-wave-drift {
     animation: none !important;
   }
 }
