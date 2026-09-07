@@ -6,9 +6,12 @@ const config: Config = {
     extend: {
       colors: {
         onyx: "#0D0D0D",
-        bronze: "#8C6A4A",
         pearl: "#F4EFE8",
-        bordeaux: "#5E1F3A",
+        // bronze en bordeaux verwijzen naar CSS-variabelen die per gekozen thema
+        // (Marmer/Carbon/Luxury) van waarde wisselen, zie app/globals.css.
+        bronze: "var(--accent)",
+        "bronze-soft": "var(--accent-soft)",
+        bordeaux: "var(--cta-bg)",
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],

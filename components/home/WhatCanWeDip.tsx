@@ -1,4 +1,7 @@
+"use client";
+
 import Reveal from "@/components/ui/Reveal";
+import { useTheme } from "@/lib/theme/ThemeProvider";
 
 type Categorie = {
   slug: string;
@@ -18,6 +21,8 @@ const CATEGORIEEN: Categorie[] = [
 ];
 
 export default function WhatCanWeDip() {
+  const { dipped } = useTheme();
+
   return (
     <section className="px-6 md:px-16 py-24 md:py-28 flex flex-col items-center">
       <Reveal>
@@ -42,7 +47,11 @@ export default function WhatCanWeDip() {
                   </span>
                 </div>
               ) : (
-                <div className={`absolute inset-0 transition-transform duration-500 group-hover:scale-105 ${c.pattern}`} />
+                <div
+                  className={`absolute inset-0 transition-transform duration-500 group-hover:scale-105 ${
+                    dipped ? c.pattern : "pat-undipped"
+                  }`}
+                />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
               <div className="absolute left-5 bottom-5 right-5">

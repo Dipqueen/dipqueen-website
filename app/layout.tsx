@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, Work_Sans } from "next/font/google";
+import { ThemeProvider } from "@/lib/theme/ThemeProvider";
 import "./globals.css";
 
 const display = Bodoni_Moda({
@@ -26,7 +27,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl" className={`${display.variable} ${body.variable}`}>
-      <body className="font-body bg-onyx text-pearl antialiased">{children}</body>
+      <body className="font-body bg-onyx text-pearl antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -1,32 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { THEMES, useTheme } from "@/lib/theme/ThemeProvider";
+
+const FOTO_FILTER: Record<string, string> = {
+  marble: "none",
+  carbon: "grayscale(1) contrast(1.15) brightness(0.92)",
+  luxury: "sepia(0.55) saturate(1.5) brightness(1.05) hue-rotate(-8deg)",
+};
 
 export default function Hero() {
-  const [dipped, setDipped] = useState(false);
-
-  useEffect(() => {
-    try {
-      if (sessionStorage.getItem("dq-dipped") === "1") {
-        setDipped(true);
-        return;
-      }
-    } catch {
-      // sessionStorage kan onbeschikbaar zijn, geen probleem, gewoon door
-    }
-    const timer = setTimeout(() => dip(), 2200);
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  function dip() {
-    setDipped(true);
-    try {
-      sessionStorage.setItem("dq-dipped", "1");
-    } catch {
-      // geen probleem als dit niet lukt
-    }
-  }
+  const { theme, dipped, chooseTheme, dip, reset } = useTheme();
 
   return (
     <section className="relative flex flex-col md:flex-row items-center gap-12 md:gap-16 px-6 md:px-16 pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden">
@@ -41,33 +24,73 @@ export default function Hero() {
           Van standaard naar allesbehalve standaard. DipQueen verandert bestaande producten via
           hydro dipping, met patronen, prints en designs.
         </p>
-        <div className="flex flex-wrap items-center gap-5 mt-2 animate-fade-up [animation-delay:360ms]">
+
+        <div className="flex flex-wrap gap-3 mt-2 animate-fade-up [animation-delay:360ms]">
           <a href="/ontdek" className="btn-primary">
             Ontdek de mogelijkheden
           </a>
           <a href="/check-mijn-idee" className="btn-outline-dark">
             Breng het tot leven
           </a>
-          {!dipped && (
-            <button
-              type="button"
-              onClick={dip}
-              className="flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-bronze hover:text-pearl transition-colors"
-            >
-              <span className="w-2 h-2 rounded-full bg-bronze animate-breathe" />
-              Dip it
-            </button>
-          )}
         </div>
+
+        {/* Kies je thema en dip de site */}
+        {!dipped ? (
+          <div className="mt-4 flex flex-col gap-3 animate-fade-up [animation-delay:480ms]">
+            <span className="text-xs tracking-[0.14em] uppercase text-pearl/50">
+              Kies jouw finish
+            </span>
+            <div className="flex flex-wrap items-center gap-3">
+              {THEMES.map((t) => (
+                <button
+                  key={t.key}
+                  type="button"
+                  onClick={() => chooseTheme(t.key)}
+                  className={`flex items-center gap-2 pl-1.5 pr-4 py-1.5 rounded-full border text-xs font-semibold tracking-[0.08em] uppercase transition-colors ${
+                    theme === t.key
+                      ? "border-pearl text-pearl"
+                      : "border-pearl/25 text-pearl/60 hover:border-pearl/50 hover:text-pearl/85"
+                  }`}
+                >
+                  <span className={`w-5 h-5 rounded-full ${t.swatch}`} />
+                  {t.naam}
+                </button>
+              ))}
+
+              <button
+                type="button"
+                onClick={dip}
+                disabled={!theme}
+                className={`flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase transition-all ${
+                  theme ? "text-bronze hover:text-pearl" : "text-pearl/25 cursor-not-allowed"
+                }`}
+              >
+                <span className={`w-2 h-2 rounded-full bg-bronze ${theme ? "animate-breathe" : ""}`} />
+                Dip it!
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={reset}
+            className="mt-2 self-start text-xs tracking-[0.1em] uppercase text-pearl/40 hover:text-pearl/70 transition-colors animate-fade-up"
+          >
+            Ander thema? →
+          </button>
+        )}
       </div>
 
-      <div className="relative flex-1 w-full max-w-md md:max-w-none h-[320px] md:h-[560px] rounded-2xl overflow-hidden border border-pearl/10 bg-[#111214]">
+      <div className="relative flex-1 w-full max-w-md md:max-w-none h-[320px] md:h-[560px] rounded-2xl overflow-hidden border border-pearl/10 pat-undipped">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/hero-product.jpg"
-          alt="DipQueen hydro dipped champagneset in marmerpatroon: fles, koeler en dienblad"
+          alt="DipQueen hydro dipped champagneset, fles, koeler en dienblad"
           className="absolute inset-0 w-full h-full object-cover transition-[clip-path] duration-[1600ms] ease-out"
-          style={{ clipPath: dipped ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)" }}
+          style={{
+            clipPath: dipped ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)",
+            filter: theme ? FOTO_FILTER[theme] : "none",
+          }}
         />
       </div>
     </section>

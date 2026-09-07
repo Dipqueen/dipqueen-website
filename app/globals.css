@@ -11,13 +11,42 @@
   }
 }
 
+/* ---- Kleurthema: Marmer / Carbon / Luxury goud ----
+   Standaard (voordat een bezoeker kiest en op DIP IT klikt) is alles neutraal
+   grijs, "onbedipt". Zodra een thema gekozen en gedipt is, zet ThemeProvider
+   data-theme op <html> en schuiven alle bronze/bordeaux-elementen op de hele
+   site automatisch mee, zonder dat elke pagina apart aangepast hoeft te worden. */
+:root {
+  --accent: #8a8a8a;
+  --accent-soft: #a3a3a3;
+  --cta-bg: #262626;
+}
+
+[data-theme="marble"] {
+  --accent: #8c6a4a;
+  --accent-soft: #a17d59;
+  --cta-bg: #5e1f3a;
+}
+
+[data-theme="carbon"] {
+  --accent: #8b93a0;
+  --accent-soft: #a7aeb8;
+  --cta-bg: #1c1d20;
+}
+
+[data-theme="luxury"] {
+  --accent: #d4af6a;
+  --accent-soft: #e3c688;
+  --cta-bg: #4a3510;
+}
+
 @layer components {
   .btn-primary {
-    @apply bg-bronze text-pearl px-8 py-4 text-sm font-semibold tracking-[0.14em] uppercase transition-all hover:-translate-y-0.5;
-    background-color: #8c6a4a;
+    @apply text-pearl px-8 py-4 text-sm font-semibold tracking-[0.14em] uppercase transition-all hover:-translate-y-0.5;
+    background-color: var(--accent);
   }
   .btn-primary:hover {
-    background-color: #a17d59;
+    background-color: var(--accent-soft);
   }
   .btn-outline-dark {
     @apply bg-transparent text-pearl border border-pearl/45 px-8 py-4 text-sm font-semibold tracking-[0.14em] uppercase transition-all hover:-translate-y-0.5 hover:border-pearl;
@@ -89,6 +118,11 @@
 .pat-logo {
   background: #17181a;
   border: 1px dashed rgba(244, 239, 232, 0.35);
+}
+
+.pat-undipped {
+  background: rgba(130, 130, 130, 0.14);
+  border: 1px dashed rgba(130, 130, 130, 0.4);
 }
 
 /* ---- Beweging: scroll-reveal, ambient float, subtiele micro-interacties ---- */
