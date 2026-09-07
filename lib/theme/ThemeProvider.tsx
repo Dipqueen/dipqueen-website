@@ -28,10 +28,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // pagina opnieuw hoeft te kiezen.
   useEffect(() => {
     try {
-      const savedTheme = sessionStorage.getItem("dq-theme") as ThemeKey | null;
-      const savedDipped = sessionStorage.getItem("dq-dipped") === "1";
+      const savedTheme = sessionStorage.getItem("dq-site-theme") as ThemeKey | null;
+      const savedDipped = sessionStorage.getItem("dq-site-dipped") === "1";
       if (savedTheme) setThemeState(savedTheme);
       if (savedDipped) setDipped(true);
+      // Opruimen: oude sleutelnamen uit eerdere testversies, anders lijkt het alsof
+      // er al gedipt is terwijl de pop-up nooit is gezien.
+      sessionStorage.removeItem("dq-theme");
+      sessionStorage.removeItem("dq-dipped");
     } catch {
       // sessionStorage kan onbeschikbaar zijn, geen probleem
     }
@@ -48,7 +52,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   function chooseTheme(t: ThemeKey) {
     setThemeState(t);
     try {
-      sessionStorage.setItem("dq-theme", t);
+      sessionStorage.setItem("dq-site-theme", t);
     } catch {
       // geen probleem
     }
@@ -57,7 +61,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   function dip() {
     setDipped(true);
     try {
-      sessionStorage.setItem("dq-dipped", "1");
+      sessionStorage.setItem("dq-site-dipped", "1");
     } catch {
       // geen probleem
     }
@@ -67,8 +71,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setThemeState(null);
     setDipped(false);
     try {
-      sessionStorage.removeItem("dq-theme");
-      sessionStorage.removeItem("dq-dipped");
+      sessionStorage.removeItem("dq-site-theme");
+      sessionStorage.removeItem("dq-site-dipped");
     } catch {
       // geen probleem
     }
