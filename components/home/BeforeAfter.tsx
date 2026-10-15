@@ -1,7 +1,6 @@
 "use client";
 
 import Reveal from "@/components/ui/Reveal";
-import { useTheme } from "@/lib/theme/ThemeProvider";
 
 const VOORBEELDEN = [
   { label: "Branded Product: Logo", pattern: "pat-abstract" },
@@ -21,8 +20,6 @@ function SliderHandle() {
 }
 
 export default function BeforeAfter() {
-  const { dipped } = useTheme();
-
   return (
     <section className="bg-pearl text-onyx px-6 md:px-16 py-24 md:py-28 flex flex-col items-center">
       <Reveal>
@@ -39,7 +36,7 @@ export default function BeforeAfter() {
             <div className="flex flex-col gap-4">
               <div className="relative h-64 rounded overflow-hidden flex">
                 <div className="flex-1 bg-onyx" />
-                <div className={`flex-1 ${dipped ? v.pattern : "pat-undipped"}`} />
+                <div className={`flex-1 ${v.pattern}`} />
                 <SliderHandle />
               </div>
               <span className="text-sm tracking-[0.1em] uppercase font-semibold">{v.label}</span>

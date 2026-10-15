@@ -11,42 +11,13 @@
   }
 }
 
-/* ---- Kleurthema: Marmer / Carbon / Luxury goud ----
-   Standaard (voordat een bezoeker kiest en op DIP IT klikt) is alles neutraal
-   grijs, "onbedipt". Zodra een thema gekozen en gedipt is, zet ThemeProvider
-   data-theme op <html> en schuiven alle bronze/bordeaux-elementen op de hele
-   site automatisch mee, zonder dat elke pagina apart aangepast hoeft te worden. */
-:root {
-  --accent: #8a8a8a;
-  --accent-soft: #a3a3a3;
-  --cta-bg: #262626;
-}
-
-[data-theme="marble"] {
-  --accent: #8c6a4a;
-  --accent-soft: #a17d59;
-  --cta-bg: #5e1f3a;
-}
-
-[data-theme="carbon"] {
-  --accent: #8b93a0;
-  --accent-soft: #a7aeb8;
-  --cta-bg: #1c1d20;
-}
-
-[data-theme="luxury"] {
-  --accent: #d4af6a;
-  --accent-soft: #e3c688;
-  --cta-bg: #4a3510;
-}
-
 @layer components {
   .btn-primary {
-    @apply text-pearl px-8 py-4 text-sm font-semibold tracking-[0.14em] uppercase transition-all hover:-translate-y-0.5;
-    background-color: var(--accent);
+    @apply bg-bronze text-pearl px-8 py-4 text-sm font-semibold tracking-[0.14em] uppercase transition-all hover:-translate-y-0.5;
+    background-color: #8c6a4a;
   }
   .btn-primary:hover {
-    background-color: var(--accent-soft);
+    background-color: #a17d59;
   }
   .btn-outline-dark {
     @apply bg-transparent text-pearl border border-pearl/45 px-8 py-4 text-sm font-semibold tracking-[0.14em] uppercase transition-all hover:-translate-y-0.5 hover:border-pearl;
@@ -120,11 +91,6 @@
   border: 1px dashed rgba(244, 239, 232, 0.35);
 }
 
-.pat-undipped {
-  background: rgba(244, 239, 232, 0.12);
-  border: 1px dashed rgba(244, 239, 232, 0.35);
-}
-
 /* ---- Beweging: scroll-reveal, ambient float, subtiele micro-interacties ---- */
 
 .reveal {
@@ -177,19 +143,6 @@
   animation: spin-slow 14s linear infinite;
 }
 
-@keyframes wave-drift {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-24px);
-  }
-}
-.animate-wave-drift {
-  animation: wave-drift 2.2s ease-in-out infinite;
-}
-
 @keyframes breathe {
   0%,
   100% {
@@ -213,8 +166,7 @@
   .animate-float,
   .animate-float-delayed,
   .animate-spin-slow,
-  .animate-breathe,
-  .animate-wave-drift {
+  .animate-breathe {
     animation: none !important;
   }
 }
