@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, Work_Sans } from "next/font/google";
+import CustomCursor from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const display = Bodoni_Moda({
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="nl" className={`${display.variable} ${body.variable}`}>
       <body className="font-body bg-onyx text-pearl antialiased">
         <div className="grain-overlay" aria-hidden="true" />
+        <CustomCursor />
         {children}
       </body>
     </html>

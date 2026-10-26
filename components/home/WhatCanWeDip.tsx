@@ -33,7 +33,17 @@ export default function WhatCanWeDip() {
           <Reveal key={c.slug} delay={i * 100}>
             <a
               href={c.href}
-              className="group relative h-72 md:h-80 rounded overflow-hidden border border-onyx/10 transition-transform hover:-translate-y-2 hover:shadow-2xl"
+              onMouseMove={(e) => {
+                const el = e.currentTarget;
+                const rect = el.getBoundingClientRect();
+                const px = (e.clientX - rect.left) / rect.width - 0.5;
+                const py = (e.clientY - rect.top) / rect.height - 0.5;
+                el.style.transform = `perspective(800px) rotateX(${py * -8}deg) rotateY(${px * 8}deg) translateY(-6px)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "";
+              }}
+              className="group relative h-72 md:h-80 rounded overflow-hidden border border-onyx/10 hover:shadow-2xl"
             >
               {c.monogram ? (
                 <div className="absolute inset-0 flex items-center justify-center bg-[#17181a]">
