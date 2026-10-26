@@ -10,6 +10,8 @@ type Categorie = {
   href: string;
   pattern: string;
   altPattern: string;
+  /** Optioneel: echte referentiefoto i.p.v. het CSS-patroon (bv. een sfeerbeeld/moodboard). */
+  afbeelding?: string;
 };
 
 // Statische fallback voor de vier vaste categorieën. Zodra de Inspiration Studio
@@ -24,6 +26,7 @@ const CATEGORIEEN: Categorie[] = [
     href: "#offerte",
     pattern: "pat-marble",
     altPattern: "pat-luxury",
+    afbeelding: "/finish-marble-pearl.jpg",
   },
   {
     nummer: "02",
@@ -92,10 +95,19 @@ export default function WhatCanWeDip() {
                   }}
                   className="relative h-72 w-full overflow-hidden rounded-sm transition-transform duration-500 ease-out md:h-[26rem] md:w-7/12"
                 >
-                  <div className={`absolute inset-0 ${c.pattern}`} />
-                  <div
-                    className={`absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 ${c.altPattern}`}
-                  />
+                  {c.afbeelding ? (
+                    <div
+                      className="absolute inset-0 scale-100 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                      style={{ backgroundImage: `url('${c.afbeelding}')` }}
+                    />
+                  ) : (
+                    <>
+                      <div className={`absolute inset-0 ${c.pattern}`} />
+                      <div
+                        className={`absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 ${c.altPattern}`}
+                      />
+                    </>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-onyx/70 via-transparent to-transparent" />
                   <span className="absolute left-6 top-6 font-display text-7xl text-pearl/10 md:text-8xl">
                     {c.nummer}
