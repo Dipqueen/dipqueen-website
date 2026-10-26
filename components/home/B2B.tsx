@@ -1,34 +1,71 @@
 import Reveal from "@/components/ui/Reveal";
 
+const ROUTES = [
+  {
+    nummer: "01",
+    titel: "Zakelijke productseries",
+    omschrijving: "Een vaste afwerkingslijn voor je volledige assortiment, consistent en schaalbaar.",
+  },
+  {
+    nummer: "02",
+    titel: "Branded objects",
+    omschrijving: "Logo, kleur en patroon geïntegreerd in het product zelf — niet erop, maar erin.",
+  },
+  {
+    nummer: "03",
+    titel: "Exclusieve finishes",
+    omschrijving: "Limited editions en bijzondere oppervlaktes voor premium of seizoensgebonden releases.",
+  },
+  {
+    nummer: "04",
+    titel: "Bijzondere merkconcepten",
+    omschrijving: "Een idee, een samenwerking of een concept dat nog niet bestaat — wij denken mee.",
+  },
+];
+
 export default function B2B() {
   return (
-    <section className="bg-pearl text-onyx px-6 md:px-16 py-24 md:py-28 flex flex-col md:flex-row items-center gap-16">
-      <Reveal>
-        <div className="flex-1 max-w-lg flex flex-col gap-5">
-          <span className="eyebrow">Zakelijk</span>
-          <h2 className="font-display text-4xl leading-tight">
-            YOUR PRODUCT.
-            <br />
-            YOUR BRAND.
-            <br />
-            <span className="text-bronze">Anything but standard.</span>
-          </h2>
-          <p className="text-onyx/70 max-w-md">
-            Wij helpen bedrijven om bestaande producten visueel onderdeel van hun merk te maken,
-            met branded productseries, custom patterns, logo-integratie, limited editions en
-            prototypes. Kleine en grotere series.
+    <section className="bg-pearl px-6 py-24 text-onyx md:px-16 md:py-32">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <Reveal>
+          <div className="flex max-w-lg flex-col gap-4">
+            <span className="eyebrow">Zakelijk</span>
+            <h2 className="font-display text-4xl leading-tight md:text-5xl">
+              YOUR PRODUCT. YOUR BRAND.
+              <br />
+              <span className="text-bronze">Anything but standard.</span>
+            </h2>
+          </div>
+        </Reveal>
+        <Reveal delay={80}>
+          <p className="max-w-sm text-onyx/65">
+            Wij helpen bedrijven om bestaande producten visueel onderdeel van hun merk te maken —
+            van kleine oplages tot grotere series.
           </p>
-          <a href="#offerte" className="btn-outline-light self-start mt-2">
-            Bespreek jouw product
-          </a>
-        </div>
-      </Reveal>
-      <div className="flex-1 flex items-center justify-center gap-7">
-        <div className="rounded-blob w-56 h-64 bg-onyx animate-float" />
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className="animate-spin-slow">
-          <path d="M14 4v20M4 14h20" stroke="#8C6A4A" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-        <div className="rounded-blob w-56 h-64 pat-abstract animate-float-delayed" />
+        </Reveal>
+      </div>
+
+      <div className="mt-16 grid gap-px overflow-hidden rounded-sm bg-onyx/10 md:mt-20 md:grid-cols-2">
+        {ROUTES.map((r, i) => (
+          <Reveal key={r.titel} delay={i * 80}>
+            <a
+              href="#offerte"
+              className="group flex flex-col gap-3 bg-pearl p-8 transition-colors duration-300 hover:bg-onyx md:p-10"
+            >
+              <span className="font-display text-sm text-bronze">{r.nummer}</span>
+              <h3 className="font-display text-2xl transition-colors duration-300 group-hover:text-pearl md:text-3xl">
+                {r.titel}
+              </h3>
+              <p className="max-w-sm text-onyx/60 transition-colors duration-300 group-hover:text-pearl/65">
+                {r.omschrijving}
+              </p>
+              <span className="mt-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-bronze">
+                Bespreek dit
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

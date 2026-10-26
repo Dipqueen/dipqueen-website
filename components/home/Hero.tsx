@@ -1,46 +1,103 @@
-import HeroCanvas from "@/components/home/HeroCanvas";
+"use client";
+
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReduced) {
+      videoRef.current?.pause();
+      return;
+    }
+
+    let cleanup: (() => void) | undefined;
+
+    (async () => {
+      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+      ]);
+      gsap.registerPlugin(ScrollTrigger);
+
+      const ctx = gsap.context(() => {
+        gsap.to(".hero-parallax", {
+          yPercent: 16,
+          scale: 1.08,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+        gsap.to(".hero-copy", {
+          opacity: 0,
+          yPercent: -14,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "65% top",
+            scrub: true,
+          },
+        });
+      }, sectionRef);
+
+      cleanup = () => ctx.revert();
+    })();
+
+    return () => cleanup?.();
+  }, []);
+
   return (
-    <section className="relative flex flex-col items-center text-center px-6 md:px-16 pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden">
-      <HeroCanvas />
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-onyx px-6 text-center md:px-16"
+    >
+      <div className="hero-parallax absolute inset-0">
+        <video
+          ref={videoRef}
+          className="h-full w-full object-cover"
+          src="/dip-hero-loop.mp4"
+          poster="/dip-process-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-onyx/85 via-onyx/50 to-onyx" />
+      </div>
 
-      <div className="relative z-10 flex flex-col items-center gap-6 max-w-3xl mx-auto">
-        <span className="eyebrow tracking-[0.3em] animate-fade-up [animation-delay:0ms]">DipQueen</span>
-        <h1 className="font-display text-7xl md:text-8xl leading-[0.98] tracking-tight text-pearl">
-          <span className="inline-block animate-fade-up [animation-delay:80ms]">Beyond</span>{" "}
-          <span className="inline-block animate-fade-up [animation-delay:160ms]">the</span>
+      <div className="hero-copy relative z-10 flex flex-col items-center gap-6">
+        <span className="eyebrow tracking-[0.35em] animate-fade-up [animation-delay:0ms]">
+          DipQueen
+        </span>
+        <h1 className="font-display text-[clamp(3.2rem,11vw,9.5rem)] leading-[0.92] tracking-tight text-pearl animate-fade-up [animation-delay:120ms]">
+          Beyond the
           <br />
-          <span className="inline-block text-bronze italic animate-fade-up [animation-delay:260ms]">
-            Surface.
-          </span>
+          <span className="text-bronze italic">Surface.</span>
         </h1>
-        <p className="text-lg text-pearl/70 max-w-md animate-fade-up [animation-delay:360ms]">
-          Waar afwerking overgaat in merkbeleving.
+        <p className="max-w-md text-lg text-pearl/75 animate-fade-up [animation-delay:260ms]">
+          Wij dompelen producten onder in merkidentiteit.
         </p>
-
-        <div className="w-16 h-px bg-bronze/40 my-2 animate-fade-up [animation-delay:420ms]" />
-
-        <div className="flex flex-col gap-4 text-pearl/70 max-w-lg animate-fade-up [animation-delay:480ms]">
-          <p>
-            Wij gaan verder dan de oppervlakte. We dompelen producten onder in de identiteit van
-            een merk en transformeren ze tot onderscheidende objecten die indruk maken.
-          </p>
-          <p>
-            Van een verfijnde finish tot een onvergetelijk moment. Elk detail draagt bij aan een
-            beleving die verder gaat dan alleen het product.
-          </p>
-        </div>
-
-        <p className="font-display italic text-bronze text-xl animate-fade-up [animation-delay:540ms]">
-          Niet zomaar gezien. Maar ervaren.
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-3 mt-4 animate-fade-up [animation-delay:600ms]">
+        <div className="mt-4 flex flex-wrap justify-center gap-3 animate-fade-up [animation-delay:380ms]">
           <a href="#offerte" className="btn-primary">
             Vraag een offerte aan
           </a>
+          <a href="#immersion" className="btn-outline-dark">
+            Bekijk het proces
+          </a>
         </div>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-fade-up text-pearl/50 [animation-delay:600ms]">
+        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
       </div>
     </section>
   );

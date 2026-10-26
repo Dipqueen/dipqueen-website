@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
+import ArtOfImmersion from "@/components/home/ArtOfImmersion";
 import Onderdompelen from "@/components/home/Onderdompelen";
 import WhatCanWeDip from "@/components/home/WhatCanWeDip";
 import B2B from "@/components/home/B2B";
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <ArtOfImmersion />
         <Onderdompelen />
         <WhatCanWeDip />
         <B2B />
