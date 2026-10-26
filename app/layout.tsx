@@ -27,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl" className={`${display.variable} ${body.variable}`}>
       <body className="font-body bg-onyx text-pearl antialiased">
+        <div className="grain-overlay" aria-hidden="true" />
         {children}
       </body>
     </html>

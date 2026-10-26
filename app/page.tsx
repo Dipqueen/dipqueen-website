@@ -5,7 +5,6 @@ import Onderdompelen from "@/components/home/Onderdompelen";
 import WhatCanWeDip from "@/components/home/WhatCanWeDip";
 import B2B from "@/components/home/B2B";
 import ProcessTeaser from "@/components/home/ProcessTeaser";
-import ClosingCta from "@/components/home/ClosingCta";
 import Offerte from "@/components/home/Offerte";
 
 export default function HomePage() {
@@ -18,7 +17,6 @@ export default function HomePage() {
         <WhatCanWeDip />
         <B2B />
         <ProcessTeaser />
-        <ClosingCta />
         <Offerte />
       </main>
       <Footer />
