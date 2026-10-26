@@ -1,23 +1,36 @@
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center text-center gap-6 px-6 md:px-16 pt-40 pb-24 md:pt-48 md:pb-28">
-      <span className="eyebrow animate-fade-up [animation-delay:0ms]">Hydro Dipping Studio</span>
+    <section className="relative flex flex-col items-center text-center gap-6 px-6 md:px-16 pt-40 pb-20 md:pt-48 md:pb-24 max-w-3xl mx-auto">
+      <span className="eyebrow animate-fade-up [animation-delay:0ms]">DipQueen</span>
       <h1 className="font-display text-6xl md:text-7xl leading-[1.02] text-pearl animate-fade-up [animation-delay:120ms]">
-        MAKE IT
+        Beyond the
         <br />
-        <span className="text-bronze italic">YOURS.</span>
+        <span className="text-bronze italic">Surface.</span>
       </h1>
       <p className="text-lg text-pearl/70 max-w-md animate-fade-up [animation-delay:240ms]">
-        Van standaard naar allesbehalve standaard. DipQueen verandert bestaande producten via
-        hydro dipping, met patronen, prints en designs.
+        Waar afwerking overgaat in merkbeleving.
       </p>
 
-      <div className="flex flex-wrap justify-center gap-3 mt-2 animate-fade-up [animation-delay:360ms]">
-        <a href="/ontdek" className="btn-primary">
-          Ontdek de mogelijkheden
-        </a>
-        <a href="/check-mijn-idee" className="btn-outline-dark">
-          Breng het tot leven
+      <div className="w-16 h-px bg-pearl/20 my-2 animate-fade-up [animation-delay:300ms]" />
+
+      <div className="flex flex-col gap-4 text-pearl/70 max-w-lg animate-fade-up [animation-delay:360ms]">
+        <p>
+          Wij gaan verder dan de oppervlakte. We dompelen producten onder in de identiteit van een
+          merk en transformeren ze tot onderscheidende objecten die indruk maken.
+        </p>
+        <p>
+          Van een verfijnde finish tot een onvergetelijk moment. Elk detail draagt bij aan een
+          beleving die verder gaat dan alleen het product.
+        </p>
+      </div>
+
+      <p className="font-display italic text-bronze text-lg animate-fade-up [animation-delay:420ms]">
+        Niet zomaar gezien. Maar ervaren.
+      </p>
+
+      <div className="flex flex-wrap justify-center gap-3 mt-4 animate-fade-up [animation-delay:480ms]">
+        <a href="#offerte" className="btn-primary">
+          Vraag een offerte aan
         </a>
       </div>
     </section>

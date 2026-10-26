@@ -10,8 +10,8 @@ export default function ClosingCta() {
         <p className="text-pearl/80 max-w-md">Niet alles kan gedipt worden. Maar veel meer dan je denkt.</p>
       </Reveal>
       <Reveal delay={200}>
-        <a href="/check-mijn-idee" className="btn-primary mt-4">
-          Breng het tot leven
+        <a href="#offerte" className="btn-primary mt-4">
+          Vraag een offerte aan
         </a>
       </Reveal>
     </section>

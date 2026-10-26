@@ -18,7 +18,7 @@ export default function B2B() {
             met branded productseries, custom patterns, logo-integratie, limited editions en
             prototypes. Kleine en grotere series.
           </p>
-          <a href="/zakelijk" className="btn-outline-light self-start mt-2">
+          <a href="#offerte" className="btn-outline-light self-start mt-2">
             Bespreek jouw product
           </a>
         </div>

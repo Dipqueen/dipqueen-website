@@ -6,17 +6,8 @@ export default function Footer() {
         <span className="text-[11px] tracking-[0.1em] text-pearl/45">PREMIUM FINISHES. MULTI DIPPED.</span>
       </div>
       <nav className="flex gap-8 text-sm text-pearl/70">
-        <a href="/inspiratie" className="hover:text-pearl">
-          Inspiratie
-        </a>
-        <a href="/hoe-werkt-het" className="hover:text-pearl">
-          Hoe werkt het
-        </a>
-        <a href="/zakelijk" className="hover:text-pearl">
-          Zakelijk
-        </a>
-        <a href="/contact" className="hover:text-pearl">
-          Contact
+        <a href="#offerte" className="hover:text-pearl">
+          Offerte
         </a>
       </nav>
       <div className="flex gap-5 text-xs text-pearl/40">

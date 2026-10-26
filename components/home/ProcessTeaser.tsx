@@ -68,10 +68,10 @@ export default function ProcessTeaser() {
         ))}
       </div>
       <a
-        href="/hoe-werkt-het"
+        href="#offerte"
         className="mt-10 text-sm tracking-[0.08em] uppercase text-bronze hover:text-pearl transition-colors"
       >
-        Bekijk het hele proces &rarr;
+        Vraag een offerte aan &rarr;
       </a>
     </section>
   );
