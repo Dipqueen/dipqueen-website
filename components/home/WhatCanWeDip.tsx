@@ -8,10 +8,10 @@ type Categorie = {
   finish: string;
   beschrijving: string;
   href: string;
-  pattern: string;
-  altPattern: string;
-  /** Optioneel: echte referentiefoto i.p.v. het CSS-patroon (bv. een sfeerbeeld/moodboard). */
-  afbeelding?: string;
+  /** Echte referentiefoto als basis-finish (sfeerbeeld, geen clientcase). */
+  afbeelding: string;
+  /** Optioneel: tweede referentiefoto die bij hover de "andere finish" toont. */
+  altAfbeelding?: string;
 };
 
 // Statische fallback voor de vier vaste categorieën. Zodra de Inspiration Studio
@@ -24,9 +24,8 @@ const CATEGORIEEN: Categorie[] = [
     beschrijving:
       "Interieurobjecten en consumentenproducten met een verfijnde, natuurlijke uitstraling.",
     href: "#offerte",
-    pattern: "pat-marble",
-    altPattern: "pat-luxury",
     afbeelding: "/finish-marble-pearl.jpg",
+    altAfbeelding: "/finish-gold-swirl.jpg",
   },
   {
     nummer: "02",
@@ -35,8 +34,8 @@ const CATEGORIEEN: Categorie[] = [
     beschrijving:
       "Logo, kleur en patroon volledig geïntegreerd in het oppervlak van het product zelf.",
     href: "#offerte",
-    pattern: "pat-abstract",
-    altPattern: "pat-graphic",
+    afbeelding: "/finish-bordeaux-wave.jpg",
+    altAfbeelding: "/finish-gold-swirl.jpg",
   },
   {
     nummer: "03",
@@ -45,8 +44,7 @@ const CATEGORIEEN: Categorie[] = [
     beschrijving:
       "Functionele afwerkingen voor gereedschap en technische producten, slijtvast en herkenbaar.",
     href: "#offerte",
-    pattern: "pat-carbon",
-    altPattern: "pat-wood",
+    afbeelding: "/finish-carbon.jpg",
   },
   {
     nummer: "04",
@@ -54,8 +52,7 @@ const CATEGORIEEN: Categorie[] = [
     finish: "Graphic Camo",
     beschrijving: "Gedurfde patronen voor sport- en lifestylemerken die willen opvallen.",
     href: "#offerte",
-    pattern: "pat-graphic",
-    altPattern: "pat-camo",
+    afbeelding: "/finish-basketball.jpg",
   },
 ];
 
@@ -95,25 +92,23 @@ export default function WhatCanWeDip() {
                   }}
                   className="relative h-72 w-full overflow-hidden rounded-sm transition-transform duration-500 ease-out md:h-[26rem] md:w-7/12"
                 >
-                  {c.afbeelding ? (
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                    style={{ backgroundImage: `url('${c.afbeelding}')` }}
+                  />
+                  {c.altAfbeelding && (
                     <div
-                      className="absolute inset-0 scale-100 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                      style={{ backgroundImage: `url('${c.afbeelding}')` }}
+                      className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                      style={{ backgroundImage: `url('${c.altAfbeelding}')` }}
                     />
-                  ) : (
-                    <>
-                      <div className={`absolute inset-0 ${c.pattern}`} />
-                      <div
-                        className={`absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 ${c.altPattern}`}
-                      />
-                    </>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-onyx/70 via-transparent to-transparent" />
                   <span className="absolute left-6 top-6 font-display text-7xl text-pearl/10 md:text-8xl">
                     {c.nummer}
                   </span>
                   <span className="absolute bottom-6 left-6 text-xs uppercase tracking-[0.2em] text-pearl/60 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    {c.finish} — hover voor andere finish
+                    {c.finish}
+                    {c.altAfbeelding ? " — hover voor andere finish" : ""}
                   </span>
                 </div>
 

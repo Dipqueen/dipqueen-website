@@ -79,8 +79,8 @@ export default function ArtOfImmersion() {
 
       <div className="immersion-video-wrap relative w-full max-w-md">
         <div
-          className="absolute inset-0 -z-10 scale-125 bg-cover bg-center opacity-40 blur-3xl"
-          style={{ backgroundImage: "url('/dip-process-poster.jpg')" }}
+          className="absolute inset-0 -z-10 scale-125 bg-cover bg-center opacity-50 blur-3xl"
+          style={{ backgroundImage: "url('/finish-bronze-drip.jpg')" }}
           aria-hidden="true"
         />
         <video
