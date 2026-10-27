@@ -204,6 +204,18 @@ body.custom-cursor-active button {
   animation: breathe 3.2s ease-in-out infinite;
 }
 
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}
+.hero-kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1 !important;
@@ -214,7 +226,8 @@ body.custom-cursor-active button {
   .animate-float,
   .animate-float-delayed,
   .animate-spin-slow,
-  .animate-breathe {
+  .animate-breathe,
+  .hero-kenburns {
     animation: none !important;
   }
 }

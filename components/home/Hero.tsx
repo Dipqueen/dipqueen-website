@@ -4,15 +4,10 @@ import { useEffect, useRef } from "react";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReduced) {
-      videoRef.current?.pause();
-      return;
-    }
+    if (prefersReduced) return;
 
     let cleanup: (() => void) | undefined;
 
@@ -60,18 +55,11 @@ export default function Hero() {
       className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-onyx px-6 text-center md:px-16"
     >
       <div className="hero-parallax absolute inset-0">
-        <video
-          ref={videoRef}
-          className="h-full w-full object-cover"
-          src="/dip-hero-loop.mp4"
-          poster="/dip-process-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
+        <div
+          className="hero-kenburns h-full w-full bg-cover bg-center"
+          style={{ backgroundImage: "url('/finish-bordeaux-wave.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-onyx/85 via-onyx/50 to-onyx" />
+        <div className="absolute inset-0 bg-gradient-to-b from-onyx/80 via-onyx/55 to-onyx" />
       </div>
 
       <div className="hero-copy relative z-10 flex flex-col items-center gap-6">
