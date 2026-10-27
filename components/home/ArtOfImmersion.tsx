@@ -14,6 +14,12 @@ export default function ArtOfImmersion() {
       return;
     }
 
+    // Sommige browsers negeren autoplay stilletjes als de video nog niet
+    // genoeg gebufferd is op het moment dat autoPlay wordt geëvalueerd.
+    // Expliciet play() aanroepen (met catch, want een geweigerde play()
+    // gooit een onbehandelde promise-rejection) lost dat betrouwbaar op.
+    videoRef.current?.play().catch(() => {});
+
     let cleanup: (() => void) | undefined;
 
     (async () => {
@@ -84,7 +90,7 @@ export default function ArtOfImmersion() {
         </h2>
       </div>
 
-      <div className="immersion-video-wrap relative w-full max-w-xl md:max-w-2xl lg:max-w-3xl">
+      <div className="immersion-video-wrap relative w-full max-w-lg md:max-w-xl lg:max-w-2xl">
         <div
           className="absolute -inset-6 -z-10 scale-110 bg-cover bg-center opacity-60 blur-3xl md:-inset-10"
           style={{ backgroundImage: "url('/dip-process-poster.jpg')" }}
@@ -99,7 +105,8 @@ export default function ArtOfImmersion() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
+          onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
         />
         <div className="pointer-events-none absolute inset-0 rounded-sm ring-1 ring-pearl/10" />
       </div>
