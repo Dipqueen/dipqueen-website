@@ -69,7 +69,14 @@ export default function ArtOfImmersion() {
       ref={sectionRef}
       className="relative flex flex-col items-center gap-14 overflow-hidden bg-onyx px-6 py-28 text-center md:px-16 md:py-36"
     >
-      <div className="flex flex-col items-center gap-3">
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center opacity-[0.22] blur-2xl"
+        style={{ backgroundImage: "url('/finish-bronze-drip.jpg')" }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-onyx via-onyx/70 to-onyx" />
+
+      <div className="relative flex flex-col items-center gap-3">
         <span className="eyebrow immersion-line inline-block">Het proces</span>
         <h2 className="font-display text-[clamp(2.4rem,7vw,5.5rem)] leading-[0.95] text-pearl">
           <span className="immersion-line block">The Art of Immersion.</span>
@@ -77,15 +84,15 @@ export default function ArtOfImmersion() {
         </h2>
       </div>
 
-      <div className="immersion-video-wrap relative w-full max-w-md">
+      <div className="immersion-video-wrap relative w-full max-w-xl md:max-w-2xl lg:max-w-3xl">
         <div
-          className="absolute inset-0 -z-10 scale-125 bg-cover bg-center opacity-50 blur-3xl"
-          style={{ backgroundImage: "url('/finish-bronze-drip.jpg')" }}
+          className="absolute -inset-6 -z-10 scale-110 bg-cover bg-center opacity-60 blur-3xl md:-inset-10"
+          style={{ backgroundImage: "url('/dip-process-poster.jpg')" }}
           aria-hidden="true"
         />
         <video
           ref={videoRef}
-          className="relative w-full rounded-sm shadow-[0_40px_120px_-20px_rgba(0,0,0,0.8)]"
+          className="relative w-full rounded-sm shadow-[0_60px_160px_-20px_rgba(0,0,0,0.9)]"
           src="/dip-hero-loop.mp4"
           poster="/dip-process-poster.jpg"
           autoPlay
